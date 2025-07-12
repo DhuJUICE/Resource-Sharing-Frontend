@@ -1,5 +1,3 @@
-// src/components/Header.js
-
 import React, { useState } from "react";
 import {
   AppBar,
@@ -14,6 +12,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 import "../style.css";
 
 const roleLabels = {
@@ -25,25 +24,24 @@ const roleLabels = {
 
 const menuItems = [
   { text: "Home", section: "/" },
-  { text: "Search Resources", section: "resource-search" },
-  { text: "Subject View", section: "subject-view" },
-  { text: "Resource Report", section: "resource-report" },
-  { text: "Rate Resources", section: "rate-resource" },
-  { text: "Contribute Resource", section: "file-upload" },
-  { text: "Moderate Resources", section: "moderate" },
-  { text: "User Management", section: "update-user-role" },
-  { text: "Analytics", section: "analytics" },
-  { text: "Other Educational Resources", section: "oer" },
-  { text: "Self Directed Learning", section: "sdl" },
-  { text: "Contributors", section: "contributors" },
-  { text: "About Us", section: "about-us" },
-  { text: "FAQ", section: "faq" },
+  { text: "Search Resources", section: "/resource-search-page" },
+  { text: "Subject View", section: "/subject-view-page" },
+  { text: "Resource Report", section: "/resource-report-page" },
+  { text: "Rate Resources", section: "/rate-resource-page" },
+  { text: "Contribute Resource", section: "/file-upload-page" },
+  { text: "Moderate Resources", section: "/moderate-page" },
+  { text: "User Management", section: "/update-role-page" },
+  { text: "Analytics", section: "/analytics-page" },
+  { text: "Contributors", section: "/contributors-page" },
+  { text: "About Us", section: "/about-us-page" },
+  { text: "FAQ", section: "/faq-page" },
 ];
 
-const Header = ({ user, onLogout, onSectionChange }) => {
+const Header = ({ user, onLogout }) => {
   const storedUsername = localStorage.getItem("username");
   const storedUserRole = localStorage.getItem("userRole");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
@@ -51,15 +49,10 @@ const Header = ({ user, onLogout, onSectionChange }) => {
     <>
       <AppBar position="static" sx={{ bgcolor: "#4caf50" }}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleSidebar}
-          >
+          <IconButton edge="start" color="inherit" onClick={toggleSidebar}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Share2Teach
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -78,13 +71,13 @@ const Header = ({ user, onLogout, onSectionChange }) => {
               <>
                 <button
                   className="auth-button"
-                  onClick={() => onSectionChange("login")}
+                  onClick={() => navigate("/login")}
                 >
                   Login
                 </button>
                 <button
                   className="auth-button"
-                  onClick={() => onSectionChange("register")}
+                  onClick={() => navigate("/register")}
                 >
                   Sign Up
                 </button>
@@ -94,7 +87,6 @@ const Header = ({ user, onLogout, onSectionChange }) => {
         </Toolbar>
       </AppBar>
 
-      {/* Sidebar Drawer */}
       <Drawer
         variant="temporary"
         anchor="left"
@@ -117,7 +109,7 @@ const Header = ({ user, onLogout, onSectionChange }) => {
               button
               key={text}
               onClick={() => {
-                onSectionChange(section);
+                navigate(section);
                 toggleSidebar();
               }}
             >

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import {API_URL} from './apiComponents/api-base-url';
 
 const GoogleAnalytics = ({ userId, eventType, page }) => {

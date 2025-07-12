@@ -1,5 +1,4 @@
-// App.js
-import "./App.css";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Pages
@@ -18,8 +17,6 @@ import RateResource from "./components/rate-resource";
 import ModerationForm from "./components/moderation";
 import UpdateUserRole from "./components/update-user-role";
 import Analytics from "./components/analytics";
-import OER from "./components/oer";
-import Self from "./components/sdl";
 import Contributors from "./components/contributors";
 import FAQ from "./components/faq";
 import AboutUs from "./components/about-us";
@@ -29,17 +26,39 @@ import Header from "./components/sectionComponents/header";
 import Footer from "./components/sectionComponents/footer";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    const userRole = localStorage.getItem("userRole");
+    if (username && userRole) {
+      setUser({ username, userRole });
+    }
+  }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setUser(null);
+  };
+
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header user={user} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login-page" element={<Login />} />
-          <Route path="/register-page" element={<Register />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/new-password-page" element={<NewPassword />} />
           <Route path="/reset-password-page" element={<PasswordReset />} />
-          <Route path="/reset-code" element={<ResetPasswordCode email="user@example.com" />} />
+          <Route
+            path="/reset-code"
+            element={<ResetPasswordCode email="user@example.com" />}
+          />
 
           <Route path="/resource-search-page" element={<ResourceSearch />} />
           <Route path="/subject-view-page" element={<SubjectView />} />
@@ -49,8 +68,7 @@ function App() {
           <Route path="/moderate-page" element={<ModerationForm />} />
           <Route path="/update-role-page" element={<UpdateUserRole />} />
           <Route path="/analytics-page" element={<Analytics />} />
-          <Route path="/oer-page" element={<OER />} />
-          <Route path="/self-page" element={<Self />} />
+
           <Route path="/contributors-page" element={<Contributors />} />
           <Route path="/faq-page" element={<FAQ />} />
           <Route path="/about-us-page" element={<AboutUs />} />
