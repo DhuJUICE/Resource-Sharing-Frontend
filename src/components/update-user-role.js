@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles/update-user-role.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const UpdateUserRole = () => {
   const [userId, setUserId] = useState("");
@@ -8,12 +9,10 @@ const UpdateUserRole = () => {
   const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const API_URL = "https://share2teach.onrender.com";
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/user/deserial`, {
+        const response = await fetch(`${API_URL}/api/user`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PasswordReset from "./reset-password.js";
 import "./style.css"; // Importing style.css
+import {API_URL} from './apiComponents/api-base-url';
 
 const Login = ({ onLogin }) => {
   // Manage form state
@@ -36,8 +37,6 @@ const Login = ({ onLogin }) => {
     }
     return newErrors;
   };
-
-  const API_URL = "https://share2teach.onrender.com";
 
   // Handle login submission
   const handleLoginSubmit = async (e) => {

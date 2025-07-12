@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import {API_URL} from './apiComponents/api-base-url';
 
 const ResourceSearch = () => {
   const [keywords, setKeywords] = useState("");
@@ -7,12 +8,10 @@ const ResourceSearch = () => {
   const [filteredResources, setFilteredResources] = useState([]);
   const [error, setError] = useState(null); // State to manage errors
 
-  const API_URL = "https://share2teach.onrender.com";
-
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/resource/deserial`);
+        const response = await fetch(`${API_URL}/api/resource`);
         if (!response.ok) throw new Error("Failed to fetch resources");
         
         const data = await response.json();

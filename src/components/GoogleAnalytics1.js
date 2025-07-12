@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
+import {API_URL} from './apiComponents/api-base-url';
 
 const GoogleAnalytics = ({ userId, eventType, page }) => {
-
-  const API_URL = "https://share2teach.onrender.com";
-
   useEffect(() => {
     const trackAnalytics = async () => {
       const timestamp = new Date().toISOString(); // Current timestamp in ISO format

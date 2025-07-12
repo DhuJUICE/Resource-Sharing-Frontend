@@ -50,18 +50,6 @@ const Home = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/logout`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // Use the correct access token
-        },
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Logout failed.");
-      }
-
       // Clear user data and tokens after successful logout
       localStorage.removeItem("username");
       localStorage.removeItem("userRole");
@@ -70,7 +58,7 @@ const Home = () => {
       setActiveSection("/"); // Redirect to home or login
       alert("Logged out successfully!");
     } catch (error) {
-      console.error("Error during logout:", error);
+      alert("Error during logout:", error);
       alert(error.message || "An unexpected error occurred.");
     }
   };
@@ -137,7 +125,7 @@ const Home = () => {
       case "/":
         return (
           <>
-            <Typography variant="h5">Welcome to Share2Teach</Typography>
+            <Typography variant="h5">Welcome to the platform</Typography>
             <SubjectGallery />
           </>
         );
@@ -172,7 +160,7 @@ const Home = () => {
       case "contributors": // Added case for Contributors
         return <Contributors />;
       default:
-        return <Typography variant="h5">Welcome to Share2Teach</Typography>;
+        return <Typography variant="h5">Welcome to the platform</Typography>;
     }
   };
 

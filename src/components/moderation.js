@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GoogleAnalytics from "./GoogleAnalytics1.js"; // Import the Google Analytics component
 import "./style.css";
+import {API_URL} from './apiComponents/api-base-url';
 
 const ModerationForm = () => {
   const [resources, setResources] = useState([]);
@@ -13,13 +14,11 @@ const ModerationForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [analyticsData, setAnalyticsData] = useState(null); // Track analytics data to send
 
-  const API_URL = "https://share2teach.onrender.com";
-
   // Fetch resources from the API on component mount
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/resource/deserial`, {
+        const response = await fetch(`${API_URL}/api/resource`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,

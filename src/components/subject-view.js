@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const SubjectView = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allResources, setAllResources] = useState([]); // Store all resources
   const [filteredSubjects, setFilteredSubjects] = useState([]); // Store filtered subjects
 
-  const API_URL = "https://share2teach.onrender.com";
-
   // Fetch resources from the API on mount
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/resource/deserial`, {
+        const response = await fetch(`${API_URL}/api/resource`, {
           method: "GET",
           // Removed authorization headers
         });

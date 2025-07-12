@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./styles/contributors.css"; // Import the external CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const Contributors = () => {
   const [resources, setResources] = useState([]);
   const [users, setUsers] = useState({}); // Object to store users by their ID
-
-  const API_URL = "https://share2teach.onrender.com";
 
   // Fetch resources and users from the API when the component mounts
   useEffect(() => {
     const fetchResourcesAndUsers = async () => {
       try {
         const [resourcesResponse, usersResponse] = await Promise.all([
-          fetch(`${API_URL}/api/resource/deserial`, {
+          fetch(`${API_URL}/api/resource`, {
             method: "GET",
           }),
-          fetch(`${API_URL}/api/user/deserial`, {
+          fetch(`${API_URL}/api/user`, {
             method: "GET",
           }),
         ]);

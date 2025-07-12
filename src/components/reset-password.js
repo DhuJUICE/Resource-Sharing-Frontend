@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ResetPasswordCode from "./reset-password-code.js"; // Import the reset password code component
 import "./style.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const PasswordReset = ({ handleBackToLoginClick }) => {
   const [email, setEmail] = useState("");
@@ -18,8 +19,6 @@ const PasswordReset = ({ handleBackToLoginClick }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
-  const API_URL = "https://share2teach.onrender.com";
 
   const handleResetSubmit = async (e) => {
     e.preventDefault();

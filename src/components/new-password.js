@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 // New Password Component
 const NewPassword = () => {
@@ -41,9 +42,6 @@ const NewPassword = () => {
     }
     return true;
   };
-
-
-  const API_URL = "https://share2teach.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

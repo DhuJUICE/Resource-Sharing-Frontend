@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style.css"; // Import your CSS file here
+import {API_URL} from './apiComponents/api-base-url';
 
 const UploadTaggingResource = () => {
   const token = localStorage.getItem("accessToken");
@@ -51,8 +52,6 @@ const UploadTaggingResource = () => {
       setErrors((prev) => ({ ...prev, currentKeyword: "" }));
     }
   };
-
-  const API_URL = "https://share2teach.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles/rate-resource.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const RateResource = () => {
   const [resourceId, setResourceId] = useState("");
@@ -7,12 +8,10 @@ const RateResource = () => {
   const [errors, setErrors] = useState({});
   const [resources, setResources] = useState([]); // State for storing resources
 
-  const API_URL = "https://share2teach.onrender.com";
-
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/resource/deserial`, {
+        const response = await fetch(`${API_URL}/api/resource`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("accessToken")}`, // Add authorization if needed

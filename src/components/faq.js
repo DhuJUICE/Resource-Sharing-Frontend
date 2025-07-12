@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GoogleAnalytics from './GoogleAnalytics1.js'; // Import the Google Analytics component
 import "./style.css"; // Import the external CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const FAQ = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,12 +11,10 @@ const FAQ = () => {
   const [error, setError] = useState(""); // State for error messages
   const [analyticsData, setAnalyticsData] = useState(null); // Track analytics data
 
-  const API_URL = "https://share2teach.onrender.com";
-
   useEffect(() => {
     const fetchFAQs = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/faq/deserial`, {
+        const response = await fetch(`${API_URL}/api/faq`, {
           method: "GET",
         });
 

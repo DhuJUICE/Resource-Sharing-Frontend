@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style.css"; // Import the CSS file
+import {API_URL} from './apiComponents/api-base-url';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -42,8 +43,6 @@ const Register = () => {
 
     return newErrors;
   };
-
-  const API_URL = "https://share2teach.onrender.com";
   
   const handleSubmit = async (e) => {
     e.preventDefault();
