@@ -53,7 +53,7 @@ const Header = ({ user, onLogout }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Share2Teach
+            Document Management Platform
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {user ? (
