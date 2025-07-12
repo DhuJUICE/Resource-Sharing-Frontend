@@ -46,8 +46,6 @@ const Home = () => {
     setActiveSection("/"); // Redirect to home after login
   };
 
-  const API_URL = "https://share2teach.onrender.com";
-
   const handleLogout = async () => {
     try {
       // Clear user data and tokens after successful logout
