@@ -24,7 +24,6 @@ const roleLabels = {
 
 const menuItems = [
   { text: "Home", section: "/" },
-  { text: "Search Resources", section: "/resource-search-page" },
   { text: "Subject View", section: "/subject-view-page" },
   { text: "Resource Report", section: "/resource-report-page" },
   { text: "Rate Resources", section: "/rate-resource-page" },

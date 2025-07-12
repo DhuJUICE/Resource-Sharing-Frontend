@@ -9,7 +9,6 @@ import NewPassword from "./components/new-password";
 import PasswordReset from "./components/reset-password";
 import ResetPasswordCode from "./components/reset-password-code";
 
-import ResourceSearch from "./components/resource-search";
 import SubjectView from "./components/subject-view";
 import UploadTaggingResource from "./components/file-upload-tagging";
 import ResourceReport from "./components/resource-report";
@@ -60,7 +59,6 @@ function App() {
             element={<ResetPasswordCode email="user@example.com" />}
           />
 
-          <Route path="/resource-search-page" element={<ResourceSearch />} />
           <Route path="/subject-view-page" element={<SubjectView />} />
           <Route path="/file-upload-page" element={<UploadTaggingResource />} />
           <Route path="/resource-report-page" element={<ResourceReport />} />
